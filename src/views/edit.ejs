@@ -1,0 +1,32 @@
+<%- include('partials/_header'); -%>
+
+<div class="container">
+    <div class="row">
+        <!-- FORM -->
+        <div class="col-md-5 offset-md-3">
+            <div class="card">
+                <div class="card-body">
+                    <form action="/edit/<%= editar._id %>" method="POST">
+                        <div class="form-group">
+                            <input type="text" name="alumno" placeholder="Alumno" class="form-control" value="<%= editar.alumno %>" >
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="matematicas" placeholder="Introdusca la calificación de Matemáticas" class="form-control" value="<%= editar.matematicas %>" >
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="programacion" placeholder="Introdusca la calificación de Programación" class="form-control" value="<%= editar.programacion %>" >
+                        </div>
+                        <div class="form-group">
+                            <input type="text" name="software" placeholder="Introdusca la calificación de Ingeniería de Software" class="form-control" value="<%= editar.software %>" >
+                        </div>
+                        <button type="submit" class="btn btn-primary btn-block">Calificar</button>
+                    </form>
+                </div>
+            </div>
+        </div>
+
+
+    </div>
+</div>
+
+<%- include ('partials/_footer') -%>

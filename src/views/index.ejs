@@ -1,0 +1,76 @@
+<%- include('partials/_header'); -%>
+    
+    <div class="container">
+        <div class="row">
+            <!-- FORM -->
+            <div class="col-md-5 offset-md-3">
+                <div class="card">
+                    <div class="card-body">
+                        <form action="/add" method="POST">
+                            <div class="form-group">
+                                <input type="text" name="alumno" placeholder="Alumno" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="matematicas" placeholder="Introdusca la calificación de Matemáticas" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="programacion" placeholder="Introdusca la calificación de Programación" class="form-control" >
+                            </div>
+                            <div class="form-group">
+                                <input type="text" name="software" placeholder="Introdusca la calificación de Ingeniería de Software" class="form-control" >
+                            </div>
+                            <button type="submit" class="btn btn-primary btn-block">Calificar</button>
+                        </form>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="row">
+
+            <!-- LIST -->
+                <div class="col-md-12 mt-5">
+                    <table class="table table-bordered table-hover">
+                        <thead>
+                            <tr>
+                                <th>Nº</th>
+                                <th>Alumno</th>
+                                <th>Matemáticas</th>
+                                <th>Programación</th>
+                                <th>Ingeniería de sofware</th>
+                                <th>Operaciones</th>
+                            </tr>
+                        </thead>
+                        <tbody>
+                            <% for(let i = 0; i < calificaciones.length; i++) { %>
+                                <tr>
+                                    <td>
+                                        <%= i + 1 %>
+                                    </td>
+                                    <td>
+                                        <%= calificaciones[i].alumno %>
+                                    </td>
+                                    <td>
+                                        <%= calificaciones[i].matematicas %>
+                                    </td>
+                                    <td>
+                                        <%= calificaciones[i].programacion %>
+                                    </td>
+                                    <td>
+                                        <%= calificaciones[i].software %>
+                                    </td>
+                                    <td>
+                                        <a href="/turn/<%= calificaciones[i]._id %>" 
+                                        class="btn <%= calificaciones[i].status ? 'btn-success' : 'btn-dark' %>">
+                                            Confirmar
+                                        </a>
+                                        <a href="/delete/<%= calificaciones[i]._id %> " class="btn btn-danger">Delete</a>
+                                        <a href="/edit/<%= calificaciones[i]._id %> " class="btn btn-info">Edit</a>
+                                    </td>
+                                </tr>
+                            <% } %>
+                        </tbody>
+                    </table>
+                </div>
+        </div>
+
+<%- include ('partials/_footer') -%>
